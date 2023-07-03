@@ -3,12 +3,14 @@ import express, { urlencoded } from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import router from './router/routes.js';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use('/api/v1/students',router);
 
